@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="thumbnail_small">40dp</dimen>
+    <dimen name="thumbnail_medium">56dp</dimen>
+    <dimen name="thumbnail_large">72dp</dimen>
+</resources>
