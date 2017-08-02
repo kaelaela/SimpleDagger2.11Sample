@@ -1,16 +1,15 @@
 package la.kaelae.qiitaclient.ui.main
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ProgressBar
+import dagger.android.support.DaggerAppCompatActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import la.kaelae.qiitaclient.App
 import la.kaelae.qiitaclient.R
 import la.kaelae.qiitaclient.data.api.QiitaService
 import la.kaelae.qiitaclient.data.model.QiitaArticle
@@ -18,13 +17,12 @@ import la.kaelae.qiitaclient.ui.article.ArticleActivity
 import la.kaelae.qiitaclient.util.ext.snackBar
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
 
     @Inject lateinit var qiitaService: QiitaService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (application as App).appComponent.inject(this)
         setContentView(R.layout.activity_main)
         val recyclerView = findViewById<RecyclerView>(R.id.article_list)
         val adapter = ArticleAdapter()
