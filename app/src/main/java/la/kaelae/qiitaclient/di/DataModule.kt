@@ -5,23 +5,20 @@ import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
-import la.kaelae.qiitaclient.data.api.QiitaService
+import la.kaelae.qiitaclient.di.scope.PerApp
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Singleton
 
-
+@Singleton
 @Module
-class QiitaModule {
-
-    @Provides
+class DataModule {
+    @Provides @PerApp
     fun provideMoshi(): Moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
-    @Provides
+    @Provides @PerApp
     fun provideRetrofit(m: Moshi): Retrofit = Retrofit.Builder().baseUrl("https://qiita.com")
             .addConverterFactory(MoshiConverterFactory.create(m))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
-
-    @Provides
-    fun provideQiitaService(r: Retrofit): QiitaService = r.create(QiitaService::class.java)
 }
