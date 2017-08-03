@@ -1,4 +1,4 @@
-package la.kaelae.qiitaclient.ui.main
+package la.kaelae.qiitaclient.ui.article
 
 import android.support.v7.widget.RecyclerView
 import android.view.View

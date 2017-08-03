@@ -14,6 +14,7 @@ import la.kaelae.qiitaclient.R
 import la.kaelae.qiitaclient.data.api.QiitaService
 import la.kaelae.qiitaclient.data.model.QiitaArticle
 import la.kaelae.qiitaclient.ui.article.ArticleActivity
+import la.kaelae.qiitaclient.ui.article.ArticleAdapter
 import la.kaelae.qiitaclient.util.ext.snackBar
 import javax.inject.Inject
 
