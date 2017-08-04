@@ -6,22 +6,21 @@ import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import la.kaelae.qiitaclient.App
 import la.kaelae.qiitaclient.di.scope.PerApp
-import la.kaelae.qiitaclient.ui.main.MainActivity
-import la.kaelae.qiitaclient.ui.main.MainModule
 
-@Component(modules = arrayOf(
-        AndroidSupportInjectionModule::class,
-        DataModule::class,
-        MainModule::class,
-        ActivityModule::class
-))
 @PerApp
+@Component(
+        modules = arrayOf(
+                AppModule::class,
+                AndroidSupportInjectionModule::class,
+                DataModule::class,
+                ActivityModule::class
+        ))
 interface AppComponent : AndroidInjector<App> {
     @Component.Builder
     interface Builder {
         @BindsInstance fun app(app: App): Builder
+        fun appModule(module: AppModule): Builder
+        fun dataModule(module: DataModule): Builder
         fun build(): AppComponent
     }
-
-    fun inject(target: MainActivity)
 }
